@@ -5,14 +5,17 @@ import App from "./App";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import reportWebVitals from "./reportWebVitals";
+import UserProvider from "./context/user";
 
 const queryClient = new QueryClient();
-const ENABLE_R_QUERY_DEVTOOLS = process.env.NODE_ENV !== 'production'
+const ENABLE_R_QUERY_DEVTOOLS = process.env.NODE_ENV !== "production";
 
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <App />
+      <UserProvider>
+        <App />
+      </UserProvider>
 
       {ENABLE_R_QUERY_DEVTOOLS && <ReactQueryDevtools initialIsOpen={false} />}
     </QueryClientProvider>
